@@ -24,6 +24,9 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "DistributedDelaunayMesh.H"
+
+#include <random>
+
 #include "meshSearch.H"
 #include "mapDistribute.H"
 #include "zeroGradientFvPatchFields.H"
@@ -900,7 +903,9 @@ Foam::DistributedDelaunayMesh<Triangulation>::rangeInsertReferredWithInfo
         );
     }
 
-    std::random_shuffle(pointsBbDistSqr.begin(), pointsBbDistSqr.end());
+    std::random_device rng;
+    std::mt19937 urng(rng());
+    std::shuffle(pointsBbDistSqr.begin(), pointsBbDistSqr.end(), urng);
 
     // Sort in ascending order by the distance of the point from the centre
     // of the processor bounding box

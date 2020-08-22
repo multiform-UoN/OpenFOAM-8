@@ -262,7 +262,10 @@ endsw
 # Add (non-dummy) MPI implementation
 # Dummy MPI already added to LD_LIBRARY_PATH and has no external libraries
 if ( "$FOAM_MPI" != dummy ) then
-    _foamAddLib ${FOAM_LIBBIN}/${FOAM_MPI}:${FOAM_EXT_LIBBIN}/${FOAM_MPI}
+    if ($?FOAM_EXT_LIBBIN) then
+        _foamAddLib :${FOAM_EXT_LIBBIN}/${FOAM_MPI}
+    endif
+    _foamAddLib ${FOAM_LIBBIN}/${FOAM_MPI}
 endif
 
 
@@ -279,4 +282,4 @@ else
     setenv MPI_BUFFER_SIZE $minBufferSize
 endif
 
-#------------------------------------------------------------------------------
+#-------------------- vi: set ft=tcsh et sw=4 ts=4 sts=4: ---------------------

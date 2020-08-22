@@ -28,6 +28,7 @@ License
 #include "contiguous.H"
 
 #include <algorithm>
+#include <random>
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
@@ -142,7 +143,9 @@ void Foam::stableSort(UList<T>& a, const Cmp& cmp)
 template<class T>
 void Foam::shuffle(UList<T>& a)
 {
-    std::random_shuffle(a.begin(), a.end());
+    std::random_device rng;
+    std::mt19937 urng(rng());
+    std::shuffle(a.begin(), a.end(), urng);
 }
 
 

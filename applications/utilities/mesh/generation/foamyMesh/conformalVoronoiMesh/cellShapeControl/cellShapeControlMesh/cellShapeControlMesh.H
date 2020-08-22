@@ -43,7 +43,14 @@ SourceFiles
 #include "fileName.H"
 #include "searchableSurfaces.H"
 #include "conformationSurfaces.H"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-W#pragma-messages"
+
 #include "DistributedDelaunayMesh.H"
+
+#pragma clang diagnostic pop
+
 #include "CGALTriangulation3Ddefs.H"
 #include "backgroundMeshDecomposition.H"
 #include "boundBox.H"

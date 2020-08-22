@@ -4,8 +4,11 @@ cd ${0%/*} || exit 1    # Run from this directory
 # Parse arguments for library compilation
 . $WM_PROJECT_DIR/wmake/scripts/AllwmakeParseArguments
 
+CGAL_CONF_FILE=config.sh/CGAL
+[ $(uname -s) ] && CGAL_CONF_FILE=config.sh/mac/CGAL
+
 # Get BOOST_ARCH_PATH, CGAL_ARCH_PATH
-if settings=`$WM_PROJECT_DIR/bin/foamEtcFile config.sh/CGAL`
+if settings=`$WM_PROJECT_DIR/bin/foamEtcFile $CGAL_CONF_FILE`
 then
     . $settings
     if [ -n "$BOOST_ARCH_PATH" ]
@@ -30,5 +33,7 @@ wmake $targetType foamyHexMesh
 #wmake $targetType foamyHexMeshBackgroundMesh
 #(cd foamyHexMeshSurfaceSimplify && ./Allwmake $targetType $*)
 #wmake $targetType cellSizeAndAlignmentGrid
+
+unset CGAL_CONF_FILE
 
 #------------------------------------------------------------------------------

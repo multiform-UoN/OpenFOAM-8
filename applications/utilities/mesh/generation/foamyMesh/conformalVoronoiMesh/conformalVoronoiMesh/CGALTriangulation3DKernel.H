@@ -33,6 +33,9 @@ Description
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-W#pragma-messages"
+
 #include "CGAL/Delaunay_triangulation_3.h"
 
 #ifdef CGAL_INEXACT
@@ -59,6 +62,8 @@ Description
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#pragma clang diagnostic pop
 
 #endif
 

@@ -1076,8 +1076,8 @@ int main(int argc, char *argv[])
                             if
                             (
                                 nbrType != type
-                             && nbrName(min(name.size(), nbrName.size()))
-                             == name(min(name.size(), nbrName.size()))
+                             && nbrName(std::min(name.size(), nbrName.size()))
+                             == name(std::min(name.size(), nbrName.size()))
                             )
                             {
                                 nbrPatchis[nbrPatchi] = patchi;

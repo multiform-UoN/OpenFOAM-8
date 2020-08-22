@@ -24,6 +24,9 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "DelaunayMesh.H"
+
+#include <random>
+
 #include "labelPair.H"
 #include "PrintTable.H"
 #include "pointIOField.H"
@@ -302,7 +305,9 @@ Foam::Map<Foam::label> Foam::DelaunayMesh<Triangulation>::rangeInsertWithInfo
         );
     }
 
-    std::random_shuffle(points.begin(), points.end());
+    std::random_device rng;
+    std::mt19937 urng(rng());
+    std::shuffle(points.begin(), points.end(), urng);
 
     spatial_sort
     (

@@ -440,7 +440,7 @@ Foam::wordList Foam::basicThermo::splitThermoName
         }
         else if ((endc = thermoName.find(',', beg)) != string::npos)
         {
-            end = min(endb, endc);
+            end = std::min(endb, endc);
         }
         else
         {
