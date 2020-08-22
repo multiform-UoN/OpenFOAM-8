@@ -269,4 +269,7 @@ _foam_on_macos && . $WM_PROJECT_DIR/etc/config.sh/mac/functions
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [ "$BASH" ] && . $WM_PROJECT_DIR/etc/config.sh/bash_completion
 
+. "$WM_PROJECT_DIR/bin/tools/CleanFunctions"
+#. "$WM_PROJECT_DIR/bin/tools/RunFunctions"
+
 #------------------------------------------------------------------------------
